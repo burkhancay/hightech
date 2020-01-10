@@ -14,7 +14,7 @@ easy_admin:
         menu:
             - { label: 'Articles' }
             - { entity: 'Articles', label: 'Articles', icon: 'book' }
-            - { entity: 'Categories', label: 'Catégories', icon: 'tag' }
+            - { entity: 'Categories', label: 'Catégories', icon: 'newspaper-o' }
             - { entity: 'MotsCles', label: 'Mots Clés', icon: 'tag' }
             - { label: 'Utilisateurs' }
             - { entity: 'Users', label: 'Utilisateurs', icon: 'user' }

@@ -59,7 +59,7 @@ class Articles
      * @ORM\Column(type="string", length=255)
      * @var string
      */
-    private $featured_image;
+    public $featured_image;
 
     /**
      * @Vich\UploadableField(mapping="featured_images", fileNameProperty="featured_image")

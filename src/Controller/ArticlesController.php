@@ -14,40 +14,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class ArticlesController extends AbstractController
 {
     /**
-     * @Route("/", name="accueil")
+     * @Route("/accueil", name="accueil")
      */
     public function index()
     {
         $articles = $this->getDoctrine()->getRepository(Articles::class)->findAll();
+        dump($articles[0]);
 
-        return $this->render('articles/index.html.twig', [
+        return $this->render('accueil/index.html.twig', [
             'articles' => $articles,
-        ]);
-    }
-
-    /**
-     * @IsGranted("ROLE_USER")
-     * @Route("/article/nouveau", name="ajout_article")
-     */
-    public function ajoutArticle(Request $request){
-        $article = new Articles();
-
-        $form = $this->createForm(AjoutArticleFormType::class, $article);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()){
-            $article->setUsers($this->getUser());
-            $doctrine = $this->getDoctrine()->getManager();
-            $doctrine->persist($article);
-            $doctrine->flush();
-
-            $this->addFlash('message', 'Votre article a bien été publié');
-
-            return $this->redirectToRoute('accueil');
-        }
-        return $this->render('articles/ajout.html.twig', [
-            'articleForm' => $form->createView()
         ]);
     }
 
